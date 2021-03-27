@@ -23,6 +23,8 @@ namespace DDManagerSolution
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = ((App)Application.Current).Engine;
         }
     }
 }
