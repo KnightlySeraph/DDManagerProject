@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using DDManagerSolution.ViewModel;
+
 namespace DDManagerSolution
 {
     /// <summary>
@@ -13,5 +15,23 @@ namespace DDManagerSolution
     /// </summary>
     public partial class App : Application
     {
+        private DDManagerViewModel _engine;
+        public DDManagerViewModel Engine
+        {
+            get
+            {
+                return _engine;
+            }
+        }        
+
+        public App()
+        {
+            InitializeEngine();
+        }
+
+        private void InitializeEngine()
+        {
+            _engine = new DDManagerViewModel();
+        }
     }
 }

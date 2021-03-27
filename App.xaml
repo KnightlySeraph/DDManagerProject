@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:DDManagerSolution"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="/View/Resources/Brushes.xaml"/>
+                <ResourceDictionary Source="/View/Resources/ConverterDictionary.xaml"/>
+
+                <ResourceDictionary Source="/View/Resources/Styles/TextBlockDictionary.xaml"/>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
