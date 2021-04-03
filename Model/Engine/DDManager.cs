@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDManagerSolution.Model.Engine
+namespace DDManagerSolution.Model
 {
-    class DDManager
+    public static class DDManager
     {
-
+        public static Screen InitializeNewScreen()
+        {
+            return new Screen();
+        }
     }
 }

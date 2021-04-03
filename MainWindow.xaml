@@ -5,12 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DDManagerSolution"
         xmlns:views="clr-namespace:DDManagerSolution.View"
+        xmlns:viewmodel="clr-namespace:DDManagerSolution.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <views:MainMenu/>
 
-        <TabControl x:Name="Workspaces" Visibility="Collapsed"/>
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type viewmodel:ScreenViewModel}">
+            <views:ScreenView/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="1" x:Name="Workspaces" ItemsSource="{Binding Screens}"
+                    SelectedItem="{Binding SelectedScreen}"/>
+
+        <views:MainMenu Visibility="{Binding HasScreens, Converter={StaticResource BoolInvVisibilityConverter}}"/>
+
+        <ContentControl Grid.Row="0" Content="{Binding SelectedScreen}"/>
 
     </Grid>
 </Window>

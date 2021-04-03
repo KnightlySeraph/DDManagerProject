@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:DDManagerSolution">
 
     <local:BoolToVisibilityConverter                                    x:Key="BoolVisibilityConverter"/>
+    <local:BoolToInvVisibilityConverter                                 x:Key="BoolInvVisibilityConverter"/>
 
 </ResourceDictionary>
