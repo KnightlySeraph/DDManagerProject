@@ -12,5 +12,10 @@ namespace DDManagerSolution.Model
         {
             return new Screen();
         }
+
+        public static Encounter InitializeNewEncounter()
+        {
+            return new Encounter();
+        }
     }
 }

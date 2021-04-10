@@ -11,7 +11,9 @@
                 <ResourceDictionary Source="/View/Resources/ConverterDictionary.xaml"/>
 
                 <ResourceDictionary Source="/View/Resources/Styles/TextBlockDictionary.xaml"/>
-                
+                <ResourceDictionary Source="/View/Resources/Styles/TabControlDictionary.xaml"/>
+                <ResourceDictionary Source="/View/Resources/Styles/TabItemDictionary.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

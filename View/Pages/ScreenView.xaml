@@ -4,9 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDManagerSolution.View"
+             xmlns:vm="clr-namespace:DDManagerSolution.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:EncounterViewModel}">
+            <local:EncounterView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
-        <TextBlock Text="Testing Content"/>
+        <Grid Visibility="{Binding HasContent, Converter={StaticResource BoolInvVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" Content="Encounter"    MaxWidth="400" MaxHeight="80" Command="{Binding CreateEncounter}"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Dice"         MaxWidth="400" MaxHeight="80"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="Reference"    MaxWidth="400" MaxHeight="80"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="Other"        MaxWidth="400" MaxHeight="80"/>
+
+            
+
+        </Grid>
+
+        <ContentControl Content="{Binding ScreenContext}"/>
+
     </Grid>
+    
+    
 </UserControl>

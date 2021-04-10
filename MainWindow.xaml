@@ -20,16 +20,32 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <TabControl Grid.Row="1" x:Name="Workspaces" ItemsSource="{Binding Screens}"
-                    SelectedItem="{Binding SelectedScreen}"/>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Save All"/>
+                <MenuItem Header="Load"/>
+                <Separator/>
+                <MenuItem Header="Exit" InputGestureText="Alt+F4"/>
+            </MenuItem>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="Help"/>
+        </Menu>
 
-        <views:MainMenu Visibility="{Binding HasScreens, Converter={StaticResource BoolInvVisibilityConverter}}"/>
+        <TabControl Grid.Row="2" x:Name="Workspaces" 
+                    ItemsSource="{Binding Screens}"
+                    ItemContainerStyle="{StaticResource MainWindowTab}"
+                    SelectedItem="{Binding SelectedScreen}"
+                    Style="{StaticResource MainTabControl}"/>
 
-        <ContentControl Grid.Row="0" Content="{Binding SelectedScreen}"/>
+        <views:MainMenu Grid.Row="1" Visibility="{Binding HasScreens, Converter={StaticResource BoolInvVisibilityConverter}}"/>
+
+        <ContentControl Grid.Row="1" Content="{Binding SelectedScreen}"/>
 
     </Grid>
 </Window>

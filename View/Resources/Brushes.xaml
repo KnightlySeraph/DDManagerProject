@@ -4,4 +4,7 @@
     <Color x:Key="PanelSeperationColor">LightGray</Color>
     <SolidColorBrush x:Key="PanelBorderBrush" Color="{StaticResource PanelSeperationColor}"/>
 
+    <Color x:Key="MouseOverColor">LightBlue</Color>
+    <SolidColorBrush x:Key="MouseOverBrush" Color="{StaticResource MouseOverColor}"/>
+
 </ResourceDictionary>
