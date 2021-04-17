@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:DDManagerSolution.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="EncounterCollectionSource" Source="{Binding EncounterCreatures}"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -33,6 +38,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Margin="0,0,5,0">
@@ -44,7 +50,12 @@
                         <TextBlock Text="Armor Class"/>
                         <TextBox Text="{Binding CreatureToAdd.ArmorClass}"/>
                     </StackPanel>
-                    
+
+                    <StackPanel Grid.Column="2" Margin="5,0,0,0">
+                        <TextBlock Text="Initiative Roll"/>
+                        <TextBox Text="{Binding CreatureToAdd.Initiative}"/>
+                    </StackPanel>
+
                 </Grid>
 
                 <Button Grid.Row="2" Content="Add Creature" Command="{Binding AddCreature}"
@@ -54,30 +65,13 @@
         </Border>
 
         <Border Grid.Column="1">
-            <ListBox ItemsSource="{Binding EncounterCreatures}" HorizontalContentAlignment="Stretch">
+            <ListBox ItemsSource="{Binding Source={StaticResource EncounterCollectionSource}}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.Resources>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="FontSize" Value="20"/>
-                                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                                </Style>
-                            </Grid.Resources>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <TextBlock Text="{Binding CreatureName}" Grid.Column="0"/>
-
-                            <TextBlock Text="{Binding HitPoints}" Grid.Column="1"/>
-
-                            <TextBlock Text="{Binding ArmorClass}" Grid.Column="2"/>
-
-                        </Grid>
+                        <local:CreatureView CreatureName="{Binding CreatureName}"
+                                            HitPoints="{Binding HitPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            ArmorClass="{Binding ArmorClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Initiative="{Binding Initiative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

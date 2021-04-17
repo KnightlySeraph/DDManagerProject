@@ -9,8 +9,9 @@ namespace DDManagerSolution.Model
     public class EncounterCreature
     {
         private string _creatureName;
-        private int _hitPoints;
+        private string _hitPoints;
         private int _armorClass;
+        private int _initiative;
         private string _notes;
         private List<string> _conditions;
 
@@ -29,12 +30,12 @@ namespace DDManagerSolution.Model
             return _creatureName;
         }
 
-        public void HitPoints(int hitPoints)
+        public void HitPoints(string hitPoints)
         {
             _hitPoints = hitPoints;
         }
 
-        public int HitPoints()
+        public string HitPoints()
         {
             return _hitPoints;
         }
@@ -49,6 +50,16 @@ namespace DDManagerSolution.Model
             return _armorClass;
         }
 
+        public void Initiative(int initiative)
+        {
+            _initiative = initiative;
+        }
+
+        public int Initiative()
+        {
+            return _initiative;
+        }
+
         public void Notes(string notes)
         {
             _notes = notes;
@@ -57,6 +68,11 @@ namespace DDManagerSolution.Model
         public string Notes()
         {
             return _notes;
+        }
+
+        public void CalculateHitPointExpression()
+        {
+            _hitPoints = StringMath.CalculateFromExpression(_hitPoints);
         }
     }
 }

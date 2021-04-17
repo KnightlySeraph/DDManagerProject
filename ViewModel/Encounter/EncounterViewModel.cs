@@ -26,6 +26,21 @@ namespace DDManagerSolution.ViewModel
             AddCreature = new RelayCommand(AddCreatureExecuted, AddCreatureCanExecute);
         }
 
+        private void SortEncounterByInitiative()
+        {
+
+            List<EncounterCreatureViewModel> sorter = new List<EncounterCreatureViewModel>();
+
+            sorter = EncounterCreatures.OrderByDescending(i => i.Initiative).ToList();
+
+            EncounterCreatures.Clear();
+
+            foreach (EncounterCreatureViewModel creature in sorter)
+            {
+                EncounterCreatures.Add(creature);
+            }           
+        }
+
         #region Properties
 
         public ICommand AddCreature { get; set; }
@@ -53,6 +68,7 @@ namespace DDManagerSolution.ViewModel
         public void AddCreatureExecuted(object parameter)
         {
             EncounterCreatures.Add(CreatureToAdd);
+            SortEncounterByInitiative();
             CreatureToAdd = new EncounterCreatureViewModel();
         }
 

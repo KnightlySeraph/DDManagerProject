@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,13 @@ namespace DDManagerSolution.View
         {
             InitializeComponent();
         }
+
+        public class CreatureCollectionSorter : IComparer
+        {
+            public int Compare(object x, object y)
+            {
+                throw new NotImplementedException();
+            }
+        }       
     }
 }
