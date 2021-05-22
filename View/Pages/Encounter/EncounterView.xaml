@@ -21,7 +21,10 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Column="0" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,0,2,0">
-            <Grid Margin="5">
+            <Grid Margin="5" KeyboardNavigation.TabNavigation="Cycle">
+                <Grid.InputBindings>
+                    <KeyBinding Command="{Binding AddCreature}" Key="Return"/>
+                </Grid.InputBindings>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -65,16 +68,45 @@
         </Border>
 
         <Border Grid.Column="1">
-            <ListBox ItemsSource="{Binding Source={StaticResource EncounterCollectionSource}}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <local:CreatureView CreatureName="{Binding CreatureName}"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Name" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                        <TextBlock Grid.Column="1" Text="Hit Points" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                        <TextBlock Grid.Column="2" Text="Armor Class" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                        <TextBlock Grid.Column="3" Text="Inititave Roll" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                        <TextBlock Grid.Column="4" Text="Notes" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+
+                    </Grid>
+                </Border>
+
+                <ListBox Grid.Row="1" ItemsSource="{Binding Source={StaticResource EncounterCollectionSource}}" HorizontalContentAlignment="Stretch"
+                         SelectionMode="Single">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:CreatureView CreatureName="{Binding CreatureName}" Height="40"
                                             HitPoints="{Binding HitPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             ArmorClass="{Binding ArmorClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             Initiative="{Binding Initiative, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+            
         </Border>
         
     </Grid>

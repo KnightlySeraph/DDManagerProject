@@ -5,7 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
+using DDManagerSolution.View;
 using DDManagerSolution.ViewModel;
 
 namespace DDManagerSolution
@@ -27,11 +30,14 @@ namespace DDManagerSolution
         public App()
         {
             InitializeEngine();
+
+            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(TextBoxBehavior).TypeHandle);
         }
 
         private void InitializeEngine()
         {
             _engine = new DDManagerViewModel();
         }
+       
     }
 }

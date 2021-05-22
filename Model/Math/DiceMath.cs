@@ -10,9 +10,14 @@ namespace DDManagerSolution.Model
     {
         private static Random _dieEngine = new Random();
 
+        public static int RollDie(int die)
+        {
+            return _dieEngine.Next(die) + 1;
+        }
+
         public static int Roll20()
         {
-            return _dieEngine.Next(20);
+            return _dieEngine.Next(20) + 1;
         }
     }
 }

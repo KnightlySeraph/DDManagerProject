@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 
 using DDManagerSolution.Model;
+using DDManagerSolution.View;
 using System.ComponentModel;
 
 namespace DDManagerSolution.ViewModel
@@ -17,6 +18,8 @@ namespace DDManagerSolution.ViewModel
         #region Properties
 
         public ICommand AddWorkspace { get; set; }
+
+        public ICommand NewDieWindow { get; set; }
 
         public ObservableCollection<ScreenViewModel> Screens { get; set; }
 
@@ -52,7 +55,13 @@ namespace DDManagerSolution.ViewModel
 
         public DDManagerViewModel()
         {
+            #region Command Init
+
             AddWorkspace = new RelayCommand(AddWorkspaceExecuted, AddWorkspaceCanExecute);
+
+            NewDieWindow = new RelayCommand(NewDieWindowExecuted, NewDieWindowCanExecute);
+
+            #endregion
 
             Screens = new ObservableCollection<ScreenViewModel>();
         }
@@ -73,6 +82,19 @@ namespace DDManagerSolution.ViewModel
         }
 
         private bool AddWorkspaceCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void NewDieWindowExecuted(object parameter)
+        {
+            DiceRollerWindow diceRoller = new DiceRollerWindow();
+            diceRoller.DataContext = new DiceRollerViewModel(new DiceRoller());
+
+            diceRoller.Show();
+        }
+
+        private bool NewDieWindowCanExecute(object sender)
         {
             return true;
         }
