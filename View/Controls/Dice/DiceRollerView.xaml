@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>  
         </Grid.RowDefinitions>
 
         <Border Grid.Row="1">
@@ -48,16 +48,76 @@
 
                     </Grid>
                 </Border>
-                                
-                
-                
-                
-                
-                <Button Content="Roll 1D6" Grid.Row="0" Grid.Column="1"/>
-                <Button Content="Roll 1D8" Grid.Row="0" Grid.Column="2"/>
-                <Button Content="Roll 1D10" Grid.Row="1" Grid.Column="0"/>
-                <Button Content="Roll 1D12" Grid.Row="1" Grid.Column="1"/>
-                <Button Content="Roll 1D20" Grid.Row="1" Grid.Column="2"/>
+
+                <Border Grid.Row="0" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.75*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Content="Roll 1D6" Grid.Row="0" Command="{Binding RollAll}" CommandParameter="1"/>
+
+                        <TextBox Grid.Row="1" Text="{Binding SixCount}"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.75*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Content="Roll 1D8" Grid.Row="0" Command="{Binding RollAll}" CommandParameter="2"/>
+
+                        <TextBox Grid.Row="1" Text="{Binding EightCount}"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.75*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Content="Roll 1D10" Grid.Row="0" Command="{Binding RollAll}" CommandParameter="3"/>
+
+                        <TextBox Grid.Row="1" Text="{Binding TenCount}"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.75*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Content="Roll 1D12" Grid.Row="0" Command="{Binding RollAll}" CommandParameter="4"/>
+
+                        <TextBox Grid.Row="1" Text="{Binding TwelveCount}"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="0.75*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Content="Roll 1D20" Grid.Row="0" Command="{Binding RollAll}" CommandParameter="5"/>
+
+                        <TextBox Grid.Row="1" Text="{Binding TwentyCount}"/>
+
+                    </Grid>
+                </Border>
 
             </Grid>
         </Border>

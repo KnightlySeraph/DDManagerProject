@@ -95,6 +95,8 @@ namespace DDManagerSolution.Model
 
         #endregion
 
+        #region Dice Rolling Methods
+
         public int RollD4()
         {
             int total = 0;
@@ -117,6 +119,123 @@ namespace DDManagerSolution.Model
 
             return total;
         }
+
+        public int RollD6()
+        {
+            int total = 0;
+            string historyItem = "";
+            for (int i = 0; i < _sixCount; i++)
+            {
+                int dieRoll = DiceMath.RollDie(6);
+
+                if (i + 1 == _sixCount)
+                    historyItem += dieRoll + " = ";
+                else
+                    historyItem += dieRoll + " + ";
+
+
+                total += dieRoll;
+            }
+
+            historyItem += total;
+            _rollHistory.Add(historyItem);
+
+            return total;
+        }
+
+        public int RollD8()
+        {
+            int total = 0;
+            string historyItem = "";
+            for (int i = 0; i < _eightCount; i++)
+            {
+                int dieRoll = DiceMath.RollDie(8);
+
+                if (i + 1 == _fourCount)
+                    historyItem += dieRoll + " = ";
+                else
+                    historyItem += dieRoll + " + ";
+
+
+                total += dieRoll;
+            }
+
+            historyItem += total;
+            _rollHistory.Add(historyItem);
+
+            return total;
+        }
+
+        public int RollD10()
+        {
+            int total = 0;
+            string historyItem = "";
+            for (int i = 0; i < _tenCount; i++)
+            {
+                int dieRoll = DiceMath.RollDie(10);
+
+                if (i + 1 == _fourCount)
+                    historyItem += dieRoll + " = ";
+                else
+                    historyItem += dieRoll + " + ";
+
+
+                total += dieRoll;
+            }
+
+            historyItem += total;
+            _rollHistory.Add(historyItem);
+
+            return total;
+        }
+
+        public int RollD12()
+        {
+            int total = 0;
+            string historyItem = "";
+            for (int i = 0; i < _twelveCount; i++)
+            {
+                int dieRoll = DiceMath.RollDie(12);
+
+                if (i + 1 == _fourCount)
+                    historyItem += dieRoll + " = ";
+                else
+                    historyItem += dieRoll + " + ";
+
+
+                total += dieRoll;
+            }
+
+            historyItem += total;
+            _rollHistory.Add(historyItem);
+
+            return total;
+        }
+
+        public int RollD20()
+        {
+            int total = 0;
+            string historyItem = "";
+            for (int i = 0; i < _twentyCount; i++)
+            {
+                int dieRoll = DiceMath.RollDie(20);
+
+                if (i + 1 == _fourCount)
+                    historyItem += dieRoll + " = ";
+                else
+                    historyItem += dieRoll + " + ";
+
+
+                total += dieRoll;
+            }
+
+            historyItem += total;
+            _rollHistory.Add(historyItem);
+
+            return total;
+        }
+
+        #endregion
 
         public int Roll()
         {

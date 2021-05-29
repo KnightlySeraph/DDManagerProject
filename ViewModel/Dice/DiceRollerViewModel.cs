@@ -120,6 +120,21 @@ namespace DDManagerSolution.ViewModel
                 case 0:
                     _roller.RollD4();
                     break;
+                case 1:
+                    _roller.RollD6();
+                    break;
+                case 2:
+                    _roller.RollD8();
+                    break;
+                case 3:
+                    _roller.RollD10();
+                    break;
+                case 4:
+                    _roller.RollD12();
+                    break;
+                case 5:
+                    _roller.RollD20();
+                    break;
                 default:
                     _roller.Roll();
                     break;
