@@ -23,7 +23,12 @@ namespace DDManagerSolution.Model
 
         public DiceRoller()
         {
-
+            _fourCount      = 1;
+            _sixCount       = 1;
+            _eightCount     = 1;
+            _tenCount       = 1;
+            _twelveCount    = 1;
+            _twentyCount    = 1;
         }
 
         public List<string> ReturnRollHistory()

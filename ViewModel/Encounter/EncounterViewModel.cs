@@ -17,6 +17,12 @@ namespace DDManagerSolution.ViewModel
 
         #endregion
 
+        #region Properties
+
+        public DiceRollerViewModel DiceVMRef { get; }
+
+        #endregion
+
         public EncounterViewModel(Encounter encounter)
         {
             _encounter = encounter;
@@ -24,6 +30,8 @@ namespace DDManagerSolution.ViewModel
             EncounterCreatures = new ObservableCollection<EncounterCreatureViewModel>();
 
             AddCreature = new RelayCommand(AddCreatureExecuted, AddCreatureCanExecute);
+
+            DiceVMRef = new DiceRollerViewModel(new DiceRoller());
         }
 
         private void SortEncounterByInitiative()

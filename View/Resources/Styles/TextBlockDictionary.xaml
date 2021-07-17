@@ -1,8 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
+    <FontFamily x:Key="DefaultFontFamily">Arial</FontFamily>
+
     <Style x:Key="Header" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFontFamily}"/>
     </Style>
-    
+
 </ResourceDictionary>

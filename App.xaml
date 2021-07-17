@@ -11,8 +11,11 @@
                 <ResourceDictionary Source="/View/Resources/ConverterDictionary.xaml"/>
 
                 <ResourceDictionary Source="/View/Resources/Styles/TextBlockDictionary.xaml"/>
+                <ResourceDictionary Source="/View/Resources/5e Resources/Conditions.xaml"/>
                 <ResourceDictionary Source="/View/Resources/Styles/TabControlDictionary.xaml"/>
                 <ResourceDictionary Source="/View/Resources/Styles/TabItemDictionary.xaml"/>
+                <ResourceDictionary Source="/View/Resources/Styles/TextBoxDictionary.xaml"/>
+                <ResourceDictionary Source="/View/Resources/Styles/ButtonDictionary.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

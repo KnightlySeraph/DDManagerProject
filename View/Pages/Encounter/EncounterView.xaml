@@ -9,6 +9,10 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="EncounterCollectionSource" Source="{Binding EncounterCreatures}"/>
+
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="ShowGridLines" Value="False"/>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
@@ -21,49 +25,65 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Column="0" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,0,2,0">
-            <Grid Margin="5" KeyboardNavigation.TabNavigation="Cycle">
+            <Grid KeyboardNavigation.TabNavigation="Cycle">
                 <Grid.InputBindings>
                     <KeyBinding Command="{Binding AddCreature}" Key="Return"/>
                 </Grid.InputBindings>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0">
-                    <TextBlock Text="Creature Name"/>
-                    <TextBox Text="{Binding CreatureToAdd.CreatureName}"/>
-                </StackPanel>
+                <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="0,0,0,2">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="Creature Name"/>
+                            <TextBox Text="{Binding CreatureToAdd.CreatureName}"/>
+                        </StackPanel>
 
-                    <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                        <TextBlock Text="Hit Points"/>
-                        <TextBox Text="{Binding CreatureToAdd.HitPoints}"/>
-                    </StackPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                        <TextBlock Text="Armor Class"/>
-                        <TextBox Text="{Binding CreatureToAdd.ArmorClass}"/>
-                    </StackPanel>
+                            <StackPanel Grid.Row="0">
+                                <TextBlock Text="Hit Points"/>
+                                <TextBox Text="{Binding CreatureToAdd.HitPoints}"/>
+                            </StackPanel>
 
-                    <StackPanel Grid.Column="2" Margin="5,0,0,0">
-                        <TextBlock Text="Initiative Roll"/>
-                        <TextBox Text="{Binding CreatureToAdd.Initiative}"/>
-                    </StackPanel>
+                            <StackPanel Grid.Row="1">
+                                <TextBlock Text="Armor Class"/>
+                                <TextBox Text="{Binding CreatureToAdd.ArmorClass}"/>
+                            </StackPanel>
 
-                </Grid>
+                            <StackPanel Grid.Row="2">
+                                <TextBlock Text="Initiative Roll"/>
+                                <TextBox Text="{Binding CreatureToAdd.Initiative}"/>
+                            </StackPanel>
 
-                <Button Grid.Row="2" Content="Add Creature" Command="{Binding AddCreature}"
-                        MaxHeight="80"/>
-               
+                        </Grid>
+
+                        <Button Grid.Row="2" Content="Add Creature" Command="{Binding AddCreature}" Style="{StaticResource PosButton}"
+                        MaxHeight="80" VerticalAlignment="Bottom" Height="40" Margin="5"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1">
+                    <Grid Margin="5">
+                        <local:DiceRollerView DataContext="{Binding DiceVMRef}"/>
+                    </Grid>
+                </Border>
+
             </Grid>
         </Border>
 

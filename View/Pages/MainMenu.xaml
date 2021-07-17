@@ -21,6 +21,8 @@
 
                 <TextBlock Grid.Column="0" Text="D&amp;D Manager" Margin="10" Style="{StaticResource Header}"/>
 
+                <local:LinkedTextblock Grid.Column="1" Text="Blinded"/>
+
             </Grid>
         </Border>
 
