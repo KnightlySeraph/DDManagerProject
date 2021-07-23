@@ -17,6 +17,8 @@ namespace DDManagerSolution.Model
         private int _twelveCount;
         private int _twentyCount;
 
+        private int _modifier;
+
         List<string> _rollHistory = new List<string>();
 
         #endregion
@@ -29,6 +31,8 @@ namespace DDManagerSolution.Model
             _tenCount       = 1;
             _twelveCount    = 1;
             _twentyCount    = 1;
+
+            _modifier = 0;                
         }
 
         public List<string> ReturnRollHistory()
@@ -98,6 +102,16 @@ namespace DDManagerSolution.Model
             _twentyCount = value;
         }
 
+        public string Modifier()
+        {
+            return _modifier.ToString();
+        }
+
+        public void Modifier(int value)
+        {
+            _modifier = value;
+        }
+
         #endregion
 
         #region Dice Rolling Methods
@@ -111,7 +125,7 @@ namespace DDManagerSolution.Model
                 int dieRoll = DiceMath.RollDie(4);
 
                 if (i + 1 == _fourCount)
-                    historyItem += dieRoll + " = ";
+                    historyItem += dieRoll + " + ";
                 else
                     historyItem += dieRoll + " + ";
 
@@ -119,8 +133,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " = ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+             _rollHistory.Insert(0, historyItem);
 
             return total;
         }
@@ -134,7 +151,7 @@ namespace DDManagerSolution.Model
                 int dieRoll = DiceMath.RollDie(6);
 
                 if (i + 1 == _sixCount)
-                    historyItem += dieRoll + " = ";
+                    historyItem += dieRoll + " + ";
                 else
                     historyItem += dieRoll + " + ";
 
@@ -142,8 +159,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " = ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+             _rollHistory.Insert(0, historyItem);
 
             return total;
         }
@@ -157,7 +177,7 @@ namespace DDManagerSolution.Model
                 int dieRoll = DiceMath.RollDie(8);
 
                 if (i + 1 == _fourCount)
-                    historyItem += dieRoll + " = ";
+                    historyItem += dieRoll + " + ";
                 else
                     historyItem += dieRoll + " + ";
 
@@ -165,8 +185,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " = ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+             _rollHistory.Insert(0, historyItem);
 
             return total;
         }
@@ -188,8 +211,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " + ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+             _rollHistory.Insert(0, historyItem);
 
             return total;
         }
@@ -203,7 +229,7 @@ namespace DDManagerSolution.Model
                 int dieRoll = DiceMath.RollDie(12);
 
                 if (i + 1 == _fourCount)
-                    historyItem += dieRoll + " = ";
+                    historyItem += dieRoll + " + ";
                 else
                     historyItem += dieRoll + " + ";
 
@@ -211,8 +237,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " = ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+             _rollHistory.Insert(0, historyItem);
 
             return total;
         }
@@ -226,7 +255,7 @@ namespace DDManagerSolution.Model
                 int dieRoll = DiceMath.RollDie(20);
 
                 if (i + 1 == _fourCount)
-                    historyItem += dieRoll + " = ";
+                    historyItem += dieRoll + " + ";
                 else
                     historyItem += dieRoll + " + ";
 
@@ -234,8 +263,11 @@ namespace DDManagerSolution.Model
                 total += dieRoll;
             }
 
+            total += _modifier;
+            historyItem += _modifier.ToString() + " = ";
+
             historyItem += total;
-            _rollHistory.Add(historyItem);
+            _rollHistory.Insert(0, historyItem);
 
             return total;
         }

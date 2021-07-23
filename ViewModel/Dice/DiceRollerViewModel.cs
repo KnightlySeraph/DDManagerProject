@@ -84,6 +84,16 @@ namespace DDManagerSolution.ViewModel
             }
         }
 
+        public string Modifier
+        {
+            get { return _roller.Modifier(); }
+            set
+            {
+                _roller.Modifier(IntConversion(value));
+                OnPropertyChanged("Modifier");
+            }
+        }
+
         #endregion
 
         public DiceRollerViewModel(DiceRoller roller)

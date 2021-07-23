@@ -40,53 +40,57 @@
                 </Grid.RowDefinitions>
 
                 <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="0,0,0,2">
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Grid.Row="0">
-                            <TextBlock Text="Creature Name"/>
-                            <TextBox Text="{Binding CreatureToAdd.CreatureName}"/>
-                        </StackPanel>
-
-                        <Grid Grid.Row="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="5">
                             <Grid.RowDefinitions>
+                                <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0">
-                                <TextBlock Text="Hit Points"/>
-                                <TextBox Text="{Binding CreatureToAdd.HitPoints}"/>
+                                <TextBlock Text="Creature Name"/>
+                                <TextBox Text="{Binding CreatureToAdd.CreatureName}"/>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="1">
-                                <TextBlock Text="Armor Class"/>
-                                <TextBox Text="{Binding CreatureToAdd.ArmorClass}"/>
-                            </StackPanel>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <StackPanel Grid.Row="2">
-                                <TextBlock Text="Initiative Roll"/>
-                                <TextBox Text="{Binding CreatureToAdd.Initiative}"/>
-                            </StackPanel>
+                                <StackPanel Grid.Row="0">
+                                    <TextBlock Text="Hit Points"/>
+                                    <TextBox Text="{Binding CreatureToAdd.HitPoints}"/>
+                                </StackPanel>
 
-                        </Grid>
+                                <StackPanel Grid.Row="1">
+                                    <TextBlock Text="Armor Class"/>
+                                    <TextBox Text="{Binding CreatureToAdd.ArmorClass}"/>
+                                </StackPanel>
 
-                        <Button Grid.Row="2" Content="Add Creature" Command="{Binding AddCreature}" Style="{StaticResource PosButton}"
+                                <StackPanel Grid.Row="2">
+                                    <TextBlock Text="Initiative Roll"/>
+                                    <TextBox Text="{Binding CreatureToAdd.Initiative}"/>
+                                </StackPanel>
+
+                            </Grid>
+
+                            <Button Grid.Row="2" Content="Add Creature" Command="{Binding AddCreature}" Style="{StaticResource PosButton}"
                         MaxHeight="80" VerticalAlignment="Bottom" Height="40" Margin="5"/>
 
-                    </Grid>
+                        </Grid>
+                    </ScrollViewer>
                 </Border>
 
                 <Border Grid.Row="1">
-                    <Grid Margin="5">
-                        <local:DiceRollerView DataContext="{Binding DiceVMRef}"/>
-                    </Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid Margin="5">
+                            <local:DiceRollerView DataContext="{Binding DiceVMRef}"/>
+                        </Grid>
+                    </ScrollViewer>
                 </Border>
 
             </Grid>

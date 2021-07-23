@@ -17,7 +17,10 @@ namespace DDManagerSolution.Model
 
         public EncounterCreature()
         {
-
+            _creatureName = "Unnamed Creature";
+            _hitPoints = "0";
+            _armorClass = 10;
+            _initiative = 10;
         }
 
         public void CreatureName(string creatureName)
