@@ -7,16 +7,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
                     <Grid KeyboardNavigation.TabNavigation="Local">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
 
                         <TabPanel x:Name="HeaderPanel"
+                                  Margin="0"
                                   Grid.Row="0"
                                   Panel.ZIndex="1"                                 
                                   IsItemsHost="True"
                                   KeyboardNavigation.TabIndex="1"
-                                  Background="CadetBlue" />
+                                  Background="DarkGray" />
 
                     </Grid>
                 </ControlTemplate>

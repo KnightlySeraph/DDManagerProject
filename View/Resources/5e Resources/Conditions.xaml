@@ -20,7 +20,7 @@
         </Border>
     </ContentControl>
 
-    <ControlTemplate x:Key="CharmedCondition">
+    <ContentControl x:Key="CharmedCondition">
         <Border>
             <Grid>
                 <Grid.RowDefinitions>
@@ -37,6 +37,6 @@
 
             </Grid>
         </Border>
-    </ControlTemplate>
+    </ContentControl>
     
 </ResourceDictionary>

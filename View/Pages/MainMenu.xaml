@@ -19,9 +19,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="D&amp;D Manager" Margin="10" Style="{StaticResource Header}"/>
-
-                <local:LinkedTextblock Grid.Column="1" Text="Blinded"/>
+                <TextBlock Grid.Column="0" Text="Main Menu" Margin="10" Style="{StaticResource Header}"/>
 
             </Grid>
         </Border>
@@ -29,7 +27,7 @@
         <Border Grid.Row="1">
             <Grid>
                 <Grid.Resources>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                         <Setter Property="MaxHeight" Value="60"/>
                     </Style>
                 </Grid.Resources>

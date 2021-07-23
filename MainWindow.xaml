@@ -31,17 +31,53 @@
                 <MenuItem Header="Save All"/>
                 <MenuItem Header="Load"/>
                 <Separator/>
+                <MenuItem Header="Close Workspace" Command="{Binding CloseSelectedWorkspace}"/>
+                <Separator/>
                 <MenuItem Header="Exit" InputGestureText="Alt+F4"/>
             </MenuItem>
             <MenuItem Header="Edit"/>
             <MenuItem Header="Help"/>
         </Menu>
 
-        <TabControl Grid.Row="2" x:Name="Workspaces" 
-                    ItemsSource="{Binding Screens}"
-                    ItemContainerStyle="{StaticResource MainWindowTab}"
-                    SelectedItem="{Binding SelectedScreen}"
-                    Style="{StaticResource MainTabControl}"/>
+        <Border Grid.Row="2">
+            <Grid>
+                <TabControl Grid.Row="2" x:Name="Workspaces" 
+                            ItemsSource="{Binding Screens}"
+                            ItemContainerStyle="{StaticResource MainWindowTab}"
+                            SelectedItem="{Binding SelectedScreen}"
+                            Style="{StaticResource MainTabControl}"
+                            Visibility="{Binding HasScreens, Converter={StaticResource BoolVisibilityConverter}, FallbackValue=Collapsed}"/>
+
+                <ToggleButton x:Name="NewToggle" HorizontalAlignment="Right" Content="New +" Width="100" Margin="10"/>
+
+                <Popup StaysOpen="False" IsOpen="{Binding ElementName=NewToggle, Path=IsChecked}" Placement="Top"
+                       PlacementTarget="{Binding ElementName=NewToggle}" AllowsTransparency="True" PopupAnimation="Slide"
+                       VerticalOffset="-2">
+                    <Border Width="{Binding ElementName=NewToggle, Path=ActualWidth}" Height="200"
+                            BorderThickness="2" BorderBrush="{StaticResource PanelBorderBrush}" Background="White">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                    <Setter Property="Margin" Value="10"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0" Content="Encounter" Command="{Binding AddWorkspace}" CommandParameter="{x:Static viewmodel:ScreenTypes.Encounter}"/>
+                            <Button Grid.Row="1" Content="Dice Roller" IsEnabled="False"/>
+                            <Button Grid.Row="2" Content="Reference" IsEnabled="False"/>
+
+                        </Grid>
+                    </Border>
+                </Popup>
+
+            </Grid>
+        </Border>
 
         <views:MainMenu Grid.Row="1" Visibility="{Binding HasScreens, Converter={StaticResource BoolInvVisibilityConverter}}"/>
 

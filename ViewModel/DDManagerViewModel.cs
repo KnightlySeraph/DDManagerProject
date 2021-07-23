@@ -19,12 +19,14 @@ namespace DDManagerSolution.ViewModel
 
         public ICommand AddWorkspace { get; set; }
 
-        public ICommand NewDieWindow { get; set; }
+        public ICommand NewDieWindow { get; set; }   
+        
+        public ICommand CloseSelectedWorkspace { get; set; }
 
         public ObservableCollection<ScreenViewModel> Screens { get; set; }
 
-        private object _selectedScreen;
-        public object SelectedScreen
+        private ScreenViewModel _selectedScreen;
+        public ScreenViewModel SelectedScreen
         {
             get
             {
@@ -61,6 +63,8 @@ namespace DDManagerSolution.ViewModel
 
             NewDieWindow = new RelayCommand(NewDieWindowExecuted, NewDieWindowCanExecute);
 
+            CloseSelectedWorkspace = new RelayCommand(CloseSelectedWorkspaceExcuted, CloseSelectedWorkspaceCanExecute);
+
             #endregion
 
             Screens = new ObservableCollection<ScreenViewModel>();
@@ -79,9 +83,35 @@ namespace DDManagerSolution.ViewModel
         {
             Screens.Add(new ScreenViewModel(DDManager.InitializeNewScreen()));
             HasScreens = true;
+
+            if (parameter is null)
+                return;
+
+            if ((ScreenTypes)parameter == ScreenTypes.Encounter)
+            {
+                ScreenViewModel screenVMRef = Screens[Screens.Count - 1];
+                screenVMRef.CreateEncounter.Execute(null);
+            }           
         }
 
         private bool AddWorkspaceCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void CloseSelectedWorkspaceExcuted(object parameter)
+        {
+            if (SelectedScreen == null)
+                return;
+
+            Screens.Remove(SelectedScreen);
+
+            SelectedScreen = (Screens.Count > 0) ? Screens[0] : null;
+
+            HasScreens = Screens.Count > 0;
+        }
+
+        private bool CloseSelectedWorkspaceCanExecute(object sender)
         {
             return true;
         }

@@ -15,7 +15,6 @@ namespace DDManagerSolution.ViewModel
         public ScreenViewModel(Screen screen)
         {
             _screen = screen;
-
             CreateEncounter = new RelayCommand(CreateNewEncounterExecuted, CreateNewEncounterCanExecute);
         }
 
@@ -48,6 +47,16 @@ namespace DDManagerSolution.ViewModel
             {
                 _hasContent = value;
                 OnPropertyChanged("HasContent");
+            }
+        }
+
+        public string ScreenName
+        {
+            get { return _screen.ScreenName(); }
+            set
+            {
+                _screen.ScreenName(value);
+                OnPropertyChanged("ScreenName");
             }
         }
 

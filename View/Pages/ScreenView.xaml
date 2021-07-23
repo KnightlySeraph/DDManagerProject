@@ -26,9 +26,9 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Row="0" Grid.Column="0" Content="Encounter"    MaxWidth="400" MaxHeight="80" Command="{Binding CreateEncounter}"/>
-            <Button Grid.Row="0" Grid.Column="1" Content="Dice"         MaxWidth="400" MaxHeight="80"/>
-            <Button Grid.Row="1" Grid.Column="0" Content="Reference"    MaxWidth="400" MaxHeight="80"/>
-            <Button Grid.Row="1" Grid.Column="1" Content="Other"        MaxWidth="400" MaxHeight="80"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Dice"         MaxWidth="400" MaxHeight="80" IsEnabled="False"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="Reference"    MaxWidth="400" MaxHeight="80" IsEnabled="False"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="Other"        MaxWidth="400" MaxHeight="80" IsEnabled="False"/>
 
             
 

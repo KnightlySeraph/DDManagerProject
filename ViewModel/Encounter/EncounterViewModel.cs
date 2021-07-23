@@ -21,6 +21,19 @@ namespace DDManagerSolution.ViewModel
 
         public DiceRollerViewModel DiceVMRef { get; }
 
+        private EncounterCreatureViewModel _selectedCreature;
+        public EncounterCreatureViewModel SelectedCreature
+        {
+            get { return _selectedCreature; }
+            set
+            {
+                _selectedCreature = value;
+                OnPropertyChanged("SelectedCreature");
+            }
+        }
+
+        public ICommand DeleteSelectedCreature { get; set; }
+
         #endregion
 
         public EncounterViewModel(Encounter encounter)
@@ -30,8 +43,24 @@ namespace DDManagerSolution.ViewModel
             EncounterCreatures = new ObservableCollection<EncounterCreatureViewModel>();
 
             AddCreature = new RelayCommand(AddCreatureExecuted, AddCreatureCanExecute);
+            DeleteSelectedCreature = new RelayCommand(DeleteSelectedCreatureExecuted, DeleteSelectedCreatureCanExecute);
 
             DiceVMRef = new DiceRollerViewModel(new DiceRoller());
+        }
+
+        private void DeleteSelectedCreatureExecuted(object parameter)
+        {
+            if (SelectedCreature == null)
+                return;
+
+            EncounterCreatures.Remove(SelectedCreature);
+
+            SelectedCreature = (EncounterCreatures.Count > 0) ? EncounterCreatures[0] : null;
+        }
+
+        private bool DeleteSelectedCreatureCanExecute(object sender)
+        {
+            return true;
         }
 
         private void SortEncounterByInitiative()
