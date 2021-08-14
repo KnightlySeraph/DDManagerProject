@@ -17,5 +17,15 @@ namespace DDManagerSolution.Model
         {
             return new Encounter();
         }
+
+        public static Reference InitializeNewReference()
+        {
+            return new Reference();
+        }
+
+        public static void Shutdown()
+        {
+            App.Current.Shutdown();
+        }
     }
 }

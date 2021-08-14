@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDManagerSolution.View
+namespace DDManagerSolution.Model
 {
-    public enum Conditions
+    public class Reference
     {
-        Charmed,
-        Stunned,
-        Blinded
+        public Reference()
+        {
+
+        }
     }
 }

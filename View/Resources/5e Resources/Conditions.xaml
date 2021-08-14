@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <ContentControl x:Key="BlindedCondition">
+    <DataTemplate x:Key="BlindedCondition">
         <Border>
             <Grid>
                 <Grid.RowDefinitions>
@@ -10,17 +10,19 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Blinded" Style="{StaticResource Header}"/>
+                <TextBlock Grid.Row="0" Text="Blinded" Style="{StaticResource ConditionHeader}" TextDecorations="Underline"/>
 
-                <TextBlock Grid.Row="1" Text="A blinded creature can't see and automatically fails any ability check that requires sight."/>
+                <TextBlock Grid.Row="1" Text="A blinded creature can't see and automatically fails any ability check that requires sight."
+                           Style="{StaticResource ConditionText}"/>
 
-                <TextBlock Grid.Row="2" Text="Attack Rolls against the creature have advantage, and the creature's Attack Rolls have disadvantage."/>
+                <TextBlock Grid.Row="2" Text="Attack Rolls against the creature have advantage, and the creature's Attack Rolls have disadvantage."
+                           Style="{StaticResource ConditionText}"/>
 
             </Grid>
         </Border>
-    </ContentControl>
+    </DataTemplate>
 
-    <ContentControl x:Key="CharmedCondition">
+    <DataTemplate x:Key="CharmedCondition">
         <Border>
             <Grid>
                 <Grid.RowDefinitions>
@@ -29,14 +31,390 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Charmed" Style="{StaticResource Header}"/>
+                <TextBlock Text="Charmed" Style="{StaticResource ConditionHeader}"/>
 
-                <TextBlock Text="A charmed creature can't Attack the charmer of target the charmer with harmful abilities or magical Effects."/>
+                <TextBlock Grid.Row="1" Text="A charmed creature can't Attack the charmer of target the charmer with harmful abilities or magical Effects."
+                           Style="{StaticResource ConditionText}"/>
 
-                <TextBlock Text="The charmer has advantage on any ability check to interact socially with the creature."/>
+                <TextBlock Grid.Row="2" Text="The charmer has advantage on any ability check to interact socially with the creature."
+                           Style="{StaticResource ConditionText}"/>
 
             </Grid>
         </Border>
-    </ContentControl>
-    
+    </DataTemplate>
+
+    <DataTemplate x:Key="DeafenedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Deafened" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Grid.Row="1" Text="A deafened creature can't hear and automatically fails any ability check that requires hearing."
+                           Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FrightenedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Frightened" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A frightened creature has disadvantage on Ability Checks and Attack rolls while the source of its fear is within Line of Sight."
+                           Style="{StaticResource ConditionText}" Grid.Row="1"/>
+
+                <TextBlock Text="The creature can't willingly move closer to the source of its fear."
+                           Style="{StaticResource ConditionText}" Grid.Row="2"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="GrappledCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Grappled" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The condition ends if the Grappler is incapacitated (see the condition)."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The condition also ends if an Effect removes the grappled creature from the reach of the Grappler or Grappling Effect, such as when a creature is hurled away
+                                    by the Thunderwave spell."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="IncapacitatedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Incapacitated" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="An incapacitated creature can't take Actions or Reactions"
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="InvisibleCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Invisible" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="An invisible creature is impossible to see without the aid of magic or a Special sense. For the Purpose of Hiding, the creature is heavily obscured.
+                           The creature's Location can be detected by any noise it makes or any tracks it leaves."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have disadvantage, and the creatrure's Attack rolls have advantage."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ParalyzedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Paralyzed" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A paralyzed creature is incapacitated (see the conditon) and can't move or speak."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature automatically fails Strength and Dexterity Saving Throws."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have advantage."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."
+                           Grid.Row="4" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PetrifiedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Petrified" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone).
+                           Its weight increases by a factor of ten, and it ceases aging."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have advantage."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature automatically fails Strength and Dexterity Saving Throws."
+                           Grid.Row="4" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature has Resistance to all damage."
+                           Grid.Row="5" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized."
+                           Grid.Row="6" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PoisonedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Poisoned" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A poisoned creature has disadvantage on Attack rolls and Ability Checks."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ProneCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Prone" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A prone creature's only Movement option is to crawl, unless it stands up and thereby ends the condition."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature has disadvantage on Attack rolls."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="An Attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the Attack roll has disadvantage."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RestrainedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Restrained" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have advantage, and the creature's Attack rolls have disadvantage."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature has disadvantage on Dexterity Saving Throws."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="StunnedCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Stunned" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="A stunned creature is incapacitated (see the condition), can't move, and can speak only falteringly."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature automatically fails Strength and Dexterity Saving Throws."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have advantage."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="UnconsciousCondition">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Unconscious" Style="{StaticResource ConditionHeader}"/>
+
+                <TextBlock Text="An unconscious creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings."
+                           Grid.Row="1" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature drops whatever it's holding and falls prone."
+                           Grid.Row="2" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="The creature automatically fails Strength and Dexterity Saving Throws."
+                           Grid.Row="3" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Attack rolls against the creature have advantage."
+                           Grid.Row="4" Style="{StaticResource ConditionText}"/>
+
+                <TextBlock Text="Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."
+                           Grid.Row="5" Style="{StaticResource ConditionText}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ExhaustionTemplate">
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Exhaustion" Style="{StaticResource ConditionHeader}"/>
+
+                <FlowDocumentScrollViewer Grid.Row="1">
+                    <FlowDocument>
+                        <Paragraph>
+                            Some Special Abilities and environmental Hazards, such as starvation and the long-­term Effects of freezing or scorching temperatures, 
+                            can lead to a Special condition called exhaustion. Exhaustion is measured in six levels. An Effect can give a creature one or more levels of exhaustion, 
+                            as specified in the effect’s description.
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="1" Grid.Column="0" Grid.Row="0"/>
+                                <TextBlock Text="2" Grid.Column="0" Grid.Row="1"/>
+                                <TextBlock Text="3" Grid.Column="0" Grid.Row="2"/>
+                                <TextBlock Text="4" Grid.Column="0" Grid.Row="3"/>
+                                <TextBlock Text="5" Grid.Column="0" Grid.Row="4"/>
+                                <TextBlock Text="6" Grid.Column="0" Grid.Row="5"/>
+
+                                <TextBlock Text="Disadvantage on Ability Checks" Grid.Row="0" Grid.Column="1"/>
+                                <TextBlock Text="Speed Halved" Grid.Row="1" Grid.Column="1"/>
+                                <TextBlock Text="Disadvantage on Attack rolls and Saving Throws" Grid.Row="2" Grid.Column="1"/>
+                                <TextBlock Text="Hit point maximum halved" Grid.Row="3" Grid.Column="1"/>
+                                <TextBlock Text="Speed reduced to 0" Grid.Row="4" Grid.Column="1"/>
+                                <TextBlock Text="Death" Grid.Row="5" Grid.Column="1"/>
+
+                            </Grid>
+                        </BlockUIContainer>
+                        <BlockUIContainer>
+                            <Separator/>
+                        </BlockUIContainer>
+                        <Paragraph>
+                            If an already exhausted creature suffers another Effect that causes exhaustion, its current level of exhaustion increases by the amount specified in the effect’s description.
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <Separator/>
+                        </BlockUIContainer>
+                        <Paragraph>
+                            A creature suffers the Effect of its current level of exhaustion as well as all lower levels. For example, a creature suffering level 2 exhaustion has its speed halved and has disadvantage on Ability Checks.
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <Separator/>
+                        </BlockUIContainer>
+                        <Paragraph>
+                            An Effect that removes exhaustion reduces its level as specified in the effect’s description, with all exhaustion Effects Ending if a creature’s exhaustion level is reduced below 1.
+                        </Paragraph>
+                        <BlockUIContainer>
+                            <Separator/>
+                        </BlockUIContainer>
+                        <Paragraph>
+                            Finishing a Long Rest reduces a creature’s exhaustion level by 1, provided that the creature has also ingested some food and drink.
+                        </Paragraph>
+                    </FlowDocument>
+                </FlowDocumentScrollViewer>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
 </ResourceDictionary>

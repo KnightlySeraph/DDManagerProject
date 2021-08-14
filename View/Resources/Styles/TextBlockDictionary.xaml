@@ -8,4 +8,16 @@
         <Setter Property="FontFamily" Value="{StaticResource DefaultFontFamily}"/>
     </Style>
 
+    <Style x:Key="ConditionHeader" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFontFamily}"/>
+    </Style>
+
+    <Style x:Key="ConditionText" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFontFamily}"/>
+    </Style>
+
 </ResourceDictionary>

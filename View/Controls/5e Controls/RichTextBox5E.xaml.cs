@@ -62,7 +62,8 @@ namespace DDManagerSolution.View
 
         private bool MatchTokenToCondition(string value)
         {
-            return Enum.IsDefined(typeof(Conditions), value);
+            // return Enum.IsDefined(typeof(Conditions), value);
+            return false;
         }
     }
 }

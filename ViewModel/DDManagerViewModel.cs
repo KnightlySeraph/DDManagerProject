@@ -23,6 +23,12 @@ namespace DDManagerSolution.ViewModel
         
         public ICommand CloseSelectedWorkspace { get; set; }
 
+        public ICommand CloseApplication { get; set; }
+
+        public ICommand SaveWorkspace { get; set; }
+
+        public ICommand LoadWorkspace { get; set; }
+
         public ObservableCollection<ScreenViewModel> Screens { get; set; }
 
         private ScreenViewModel _selectedScreen;
@@ -65,6 +71,12 @@ namespace DDManagerSolution.ViewModel
 
             CloseSelectedWorkspace = new RelayCommand(CloseSelectedWorkspaceExcuted, CloseSelectedWorkspaceCanExecute);
 
+            CloseApplication = new RelayCommand(CloseApplicationExecuted, CloseApplicationCanExecute);
+
+            SaveWorkspace = new RelayCommand(SaveWorkspaceExecuted, SaveWorkspaceCanExecute);
+
+            LoadWorkspace = new RelayCommand(LoadWorkspaceExecuted, LoadWorkspaceCanExecute);
+
             #endregion
 
             Screens = new ObservableCollection<ScreenViewModel>();
@@ -91,7 +103,13 @@ namespace DDManagerSolution.ViewModel
             {
                 ScreenViewModel screenVMRef = Screens[Screens.Count - 1];
                 screenVMRef.CreateEncounter.Execute(null);
-            }           
+            } 
+            
+            if ((ScreenTypes)parameter == ScreenTypes.Reference)
+            {
+                ScreenViewModel screenVMRef = Screens[Screens.Count - 1];
+                screenVMRef.CreateReference.Execute(null);
+            }
         }
 
         private bool AddWorkspaceCanExecute(object sender)
@@ -125,6 +143,43 @@ namespace DDManagerSolution.ViewModel
         }
 
         private bool NewDieWindowCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void CloseApplicationExecuted(object parameter)
+        {
+            DDManager.Shutdown();
+        }
+
+        private bool CloseApplicationCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void SaveWorkspaceExecuted(object parameter)
+        {
+            if (SelectedScreen.ScreenContext.GetType() == typeof(EncounterViewModel))
+            {
+                (SelectedScreen.ScreenContext as EncounterViewModel).SaveEncounter.Execute(null);
+            }
+        }
+
+        private bool SaveWorkspaceCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void LoadWorkspaceExecuted(object parameter)
+        {
+            Screens.Add(new ScreenViewModel(DDManager.InitializeNewScreen()));
+            Screens[Screens.Count - 1].ScreenContext = new EncounterViewModel(Persistence.LoadEncounter());
+            Screens[Screens.Count - 1].HasContent = true;
+            HasScreens = true;
+            SelectedScreen = Screens[Screens.Count - 1];
+        }
+
+        private bool LoadWorkspaceCanExecute(object sender)
         {
             return true;
         }

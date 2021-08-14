@@ -34,6 +34,10 @@ namespace DDManagerSolution.ViewModel
 
         public ICommand DeleteSelectedCreature { get; set; }
 
+        public ICommand SaveEncounter { get; set; }
+
+        public ICommand LoadEncounter { get; set; }
+
         #endregion
 
         public EncounterViewModel(Encounter encounter)
@@ -42,8 +46,15 @@ namespace DDManagerSolution.ViewModel
 
             EncounterCreatures = new ObservableCollection<EncounterCreatureViewModel>();
 
+            foreach(EncounterCreature creature in encounter.Creatures)
+            {
+                EncounterCreatures.Add(new EncounterCreatureViewModel(creature));
+            }
+
             AddCreature = new RelayCommand(AddCreatureExecuted, AddCreatureCanExecute);
             DeleteSelectedCreature = new RelayCommand(DeleteSelectedCreatureExecuted, DeleteSelectedCreatureCanExecute);
+            SaveEncounter = new RelayCommand(SaveEncounterExecuted, SaveEncounterCanExecute);
+            LoadEncounter = new RelayCommand(LoadEncounterExecuted, LoadEncounterCanExecute);
 
             DiceVMRef = new DiceRollerViewModel(new DiceRoller());
         }
@@ -104,12 +115,33 @@ namespace DDManagerSolution.ViewModel
 
         public void AddCreatureExecuted(object parameter)
         {
+            _encounter.AddCreature(CreatureToAdd.GetCreature());
             EncounterCreatures.Add(CreatureToAdd);
             SortEncounterByInitiative();
             CreatureToAdd = new EncounterCreatureViewModel();
         }
 
         public bool AddCreatureCanExecute(object sender)
+        {
+            return true;
+        }
+
+        public void SaveEncounterExecuted(object parameter)
+        {
+            _encounter.SaveEncounter();
+        }
+
+        public bool SaveEncounterCanExecute(object sender)
+        {
+            return true;
+        }
+
+        private void LoadEncounterExecuted(object parameter)
+        {
+            _encounter.LoadEncounter();
+        }
+
+        private bool LoadEncounterCanExecute(object sender)
         {
             return true;
         }

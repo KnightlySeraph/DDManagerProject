@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DDManagerSolution.Model
 {
+    [DataContract(Name ="EncounterCreature")]
     public class EncounterCreature
     {
+        [DataMember()]
         private string _creatureName;
+        [DataMember()]
         private string _hitPoints;
+        [DataMember()]
         private int _armorClass;
+        [DataMember()]
         private int _initiative;
+        [DataMember()]
         private string _notes;
+
         private List<string> _conditions;
 
         public EncounterCreature()

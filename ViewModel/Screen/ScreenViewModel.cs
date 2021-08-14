@@ -16,11 +16,14 @@ namespace DDManagerSolution.ViewModel
         {
             _screen = screen;
             CreateEncounter = new RelayCommand(CreateNewEncounterExecuted, CreateNewEncounterCanExecute);
+            CreateReference = new RelayCommand(CreateNewReferenceExecuted, CreateNewReferenceCanExecute);
         }
 
         #region Properties
 
         public ICommand CreateEncounter { get; set; }
+
+        public ICommand CreateReference { get; set; }
 
         private object _screenContext;
         public object ScreenContext
@@ -73,6 +76,17 @@ namespace DDManagerSolution.ViewModel
         private bool CreateNewEncounterCanExecute(object sender)
         {
             return ScreenContext == null;
+        }
+
+        private void CreateNewReferenceExecuted(object parameter)
+        {
+            ScreenContext = new ReferenceViewModel(DDManager.InitializeNewReference());
+            HasContent = true;
+        }
+
+        private bool CreateNewReferenceCanExecute(object sender)
+        {
+            return true;
         }
 
         #endregion

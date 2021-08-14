@@ -23,6 +23,11 @@ namespace DDManagerSolution.ViewModel
             Initialize();
         }
 
+        public EncounterCreature GetCreature()
+        {
+            return _encounterCreature;
+        }
+
         #region Properties
 
         public string CreatureName
